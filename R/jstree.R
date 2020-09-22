@@ -91,10 +91,14 @@ NULL
 #' @param sort logical, whether to sort the nodes
 #' @param unique logical, whether to ensure that no node label is duplicated
 #' @param wholerow logical, whether to highlight whole selected rows
-#' @param contextMenu logical, whether to enable a context menu to create,
-#'   rename, delete, cut, copy and paste nodes
-#' @param checkCallback a JavaScript function; see the example where it is used
-#'   to define restrictions on the drag-and-drop behavior
+#' @param contextMenu either a logical value, whether to enable a context menu
+#'   to create/rename/delete/cut/copy/paste nodes, or a list of options; see
+#'   the \href{https://www.jstree.com/api/}{jsTree API documentation} for the
+#'   possible options
+#' @param checkCallback either \code{TRUE} to allow to perform some actions
+#'   such as creating a new node, or a JavaScript function; see the example
+#'   where this option is used to define restrictions on the drag-and-drop
+#'   behavior
 #' @param grid list of settings for the grid; see the second example, the
 #'   \link[jsTreeR:jstreeOutput]{Shiny example}, and
 #'   \href{https://github.com/deitch/jstree-grid/#options}{github.com/deitch/jstree-grid}
@@ -594,23 +598,42 @@ jstree <- function(
 #' )
 #'
 #' ui <- fluidPage(
-#'   tags$head(tags$style(HTML("#jstree {background-color: #fff5ee;"))),
+#'   tags$head(
+#'     tags$style(
+#'       HTML(
+#'         "#jstree {background-color: #fff5ee;}",
+#'         "img {background-color: #333; padding: 50px;}"
+#'       )
+#'     )
+#'   ),
 #'   titlePanel("Super tiny icons"),
 #'   fluidRow(
 #'     column(
-#'       width = 12,
+#'       width = 6,
 #'       jstreeOutput("jstree", height = "auto")
+#'     ),
+#'     column(
+#'       width = 6,
+#'       checkboxInput("transparent", "Transparent background"),
+#'       uiOutput("icon")
 #'     )
 #'   )
 #' )
 #'
 #' server <- function(input, output){
 #'   output[["jstree"]] <- renderJstree({
-#'     jstree(nodes, search = list(
-#'              show_only_matches = TRUE,
-#'              case_sensitive = TRUE,
-#'              search_leaves_only = TRUE
-#'            ))
+#'     jstree(nodes, multiple = FALSE, search = list(
+#'       show_only_matches = TRUE,
+#'       case_sensitive = TRUE,
+#'       search_leaves_only = TRUE
+#'     ))
+#'   })
+#'   output[["icon"]] <- renderUI({
+#'     req(length(input[["jstree_selected"]]) > 0)
+#'     svg <- req(input[["jstree_selected"]][[1]][["data"]][["svg"]])
+#'     if(input[["transparent"]])
+#'       svg <- paste0("transparent-", svg)
+#'     tags$img(src = paste0("/SuperTinyIcons/", svg), width = "75%")
 #'   })
 #' }
 #'
