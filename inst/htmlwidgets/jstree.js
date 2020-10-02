@@ -1,13 +1,16 @@
-function extractKeysWithChildren(list) {
-  return {
-    text: list.text,
-    data: list.data,
-    children: list.children.map(extractKeysWithChildren)
-  };
+function extractKeysWithChildren(list, keys) {
+  var out = {};
+  keys.forEach(function(k) {out[k] = list[k]});
+  out.children = list.children.map(function(child) {
+    return extractKeysWithChildren(child, keys);
+  });
+  return out;
 }
 
-function getNodesWithChildren(json) {
-  return json.map(extractKeysWithChildren);
+function getNodesWithChildren(json, keys) {
+  return json.map(function(list) {
+    return extractKeysWithChildren(list, keys);
+  });
 }
 
 function extractKeys(list) {
@@ -25,7 +28,7 @@ function getNodes(json) {
 function setShinyValue(instance) {
   Shiny.setInputValue(
     instance.element.attr("id") + ":jsTreeR.list",
-    getNodesWithChildren(instance.get_json())
+    getNodesWithChildren(instance.get_json(), ["text","data"])
   );
 }
 

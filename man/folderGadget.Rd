@@ -4,7 +4,13 @@
 \alias{folderGadget}
 \title{Folder gadget}
 \usage{
-folderGadget(dirs = ".", tabs = FALSE, recursive = TRUE, all.files = FALSE)
+folderGadget(
+  dirs = ".",
+  tabs = FALSE,
+  recursive = TRUE,
+  all.files = FALSE,
+  trash = FALSE
+)
 }
 \arguments{
 \item{dirs}{character vector of paths to some folders}
@@ -15,6 +21,9 @@ effective only when there are two folders in the \code{dirs} argument}
 \item{recursive, all.files}{options passed to \code{\link{list.files}};
 even if \code{all.files = TRUE}, \code{'.git'} and \code{'.Rproj.user'}
 folders are always discarded}
+
+\item{trash}{logical, whether to add a trash to the gadget, allowing to
+restore the files or folders you delete}
 }
 \description{
 Shiny gadget allowing to manipulate one or more folders.
@@ -22,4 +31,32 @@ Shiny gadget allowing to manipulate one or more folders.
 \note{
 You can run the gadget for the current directory from the Addins menu
   within RStudio ('Explore current folder').
+}
+\examples{
+library(jsTreeR)
+
+# copy a folder to a temporary location for the illustration:
+tmpDir <- tempdir()
+folder <- file.path(tmpDir, "htmlwidgets")
+htmlwidgets <- system.file("htmlwidgets", package = "jsTreeR")
+R.utils::copyDirectory(htmlwidgets, folder)
+# we use a copy because the actions performed in the gadget are
+# actually executed on the files system!
+
+# explore and manipulate the folder (drag-and-drop, right-click):
+if(interactive()){
+  folderGadget(folder)
+}
+
+# the 'trash' option allows to restore the elements you delete:
+if(interactive()){
+  folderGadget(folder, trash = TRUE)
+}
+
+# you can open several folders:
+folder1 <- file.path(folder, "lib")
+folder2 <- file.path(folder, "gadget")
+if(interactive()){
+  folderGadget(c(folder1, folder2))
+}
 }
