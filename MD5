@@ -1,11 +1,13 @@
-0b2a85845efd6fd3a08b148fb02cd036 *DESCRIPTION
+5e2f60f0c361110a2b027ca324681448 *DESCRIPTION
 b6ffce79d27e7a26bd89f6d958362ade *LICENSE.note
 f4cb852b01e1cfcc26f1e40a32b3a64a *NAMESPACE
-6fa8531b76f5b729f6647e37b4d4bc58 *NEWS.md
-465323756a9bfc4a25cb05976f38a0ca *R/folderGadget.R
-7dcd70fcb0ba708561548ad4f3c89d73 *R/jstree.R
+2640621448b9c24369ef8fd181423f21 *NEWS.md
+112c1e3d512243bf52109a91c3c37a96 *R/Countries.R
+34d59002bb9504c814646d217be4efe5 *R/folderGadget.R
+c1d4e5a5bb1fd33195234726554e8d71 *R/jstree.R
 ceda4ef5e67962ae34ae9bcf61146d00 *R/zzz.R
 b8c6103e76ab8fadef90368584afabe1 *README.md
+ed13f0d2099160e1fdde9a9a881f06ea *data/Countries.rda
 914af1d6da03ba52affa8ea93a374d7d *inst/htmlwidgets/OtherIcons/OtherIcons.css
 6a13ee10a596ae8ddccc0bb7e02c59c4 *inst/htmlwidgets/OtherIcons/c.svg
 bbd48c9270843fa048f273428fb5aa48 *inst/htmlwidgets/OtherIcons/cpp.svg
@@ -514,7 +516,7 @@ ee8495d509f4cfead2f67194607ffc0d *inst/htmlwidgets/gadget/gadget.js
 dafdab44bd544c238822debf7a8f1950 *inst/htmlwidgets/gadget/pdfobject.min.js
 2af0a4153155ce7645382a7adbe03f3b *inst/htmlwidgets/gadget/trash.css
 9c88c82dcabb4bb0f739f9a5adfcdf3d *inst/htmlwidgets/gadget/trash.js
-e2671316ec70767300f376628971c0f7 *inst/htmlwidgets/jstree.js
+735cb5710cc73ab5eba9af380fe9b480 *inst/htmlwidgets/jstree.js
 cf0318f7eb732bf1c5511255413b35a9 *inst/htmlwidgets/jstree.yaml
 561681479aeb21d4600cde6a8444c546 *inst/htmlwidgets/lib/bootstrap-theme/30px.png
 20e2f9c5b9f921ca2f6c90da355ceaa6 *inst/htmlwidgets/lib/bootstrap-theme/32px.png
@@ -547,7 +549,8 @@ c5f8f0fda67885a4647e2a2e9d7b72bb *inst/htmlwidgets/lib/jstree/dist/themes/defaul
 95bed8e667915e96907820b79f11b76c *inst/htmlwidgets/lib/jstree/dist/themes/default/throbber.gif
 8755746a3b39708365a8922a1cde2a65 *inst/htmlwidgets/lib/jstreegrid/jstreegrid.min.js
 aa20ce97004cdbd0b57325b7e0df75fb *inst/rstudio/addins.dcf
+7275c8b2d157a54c2f2596398db885e9 *man/Countries.Rd
 2a38604a60f0dd8088f1ff236c963365 *man/folderGadget.Rd
 17e81f60cfd13d19f2fce256ca955568 *man/jsTreeR-imports.Rd
-0222c7e339bc1a0e2ad1884d8b904649 *man/jstree-shiny.Rd
+177218bfcae592cc78218ca418e95db3 *man/jstree-shiny.Rd
 a80de3a498d74972e9774513c3c5841f *man/jstree.Rd

@@ -180,15 +180,16 @@ folderGadget <- function(
       folder, recursive = recursive,
       all.files = all.files, no.. = TRUE
     )
+    re <- sprintf(
+      paste0(
+        "(^\\.git$|%s+\\.git$|%s?\\.git%s+|^\\.Rproj\\.user$|",
+        "%s+\\.Rproj\\.user$|%s?\\.Rproj\\.user%s+)"
+      ),
+      .Platform$file.sep, .Platform$file.sep, .Platform$file.sep,
+      .Platform$file.sep, .Platform$file.sep, .Platform$file.sep
+    )
+    emptyFolders <- emptyFolders[!grepl(re, emptyFolders)]
     if(all.files){
-      re <- sprintf(
-        paste0(
-          "(^\\.git$|%s+\\.git$|%s?\\.git%s+|^\\.Rproj\\.user$|",
-          "%s+\\.Rproj\\.user$|%s?\\.Rproj\\.user%s+)"
-        ),
-        .Platform$file.sep, .Platform$file.sep, .Platform$file.sep,
-        .Platform$file.sep, .Platform$file.sep, .Platform$file.sep
-      )
       lf <- lf[!grepl(re, lf)]
     }
     folderContents <- c(emptyFolders, lf)
@@ -532,6 +533,7 @@ folderGadget <- function(
                      cpp = "c_cpp",
                      "c++" = "c_cpp",
                      dockerfile = "dockerfile",
+                     frag = "glsl",
                      h = "c_cpp",
                      hpp = "c_cpp",
                      css = "css",
