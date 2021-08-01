@@ -7,6 +7,7 @@
 jstree(
   nodes,
   elementId = NULL,
+  selectLeavesOnly = FALSE,
   checkboxes = FALSE,
   search = FALSE,
   searchtime = 250,
@@ -33,14 +34,14 @@ fields
   }
   \item{\code{data}}{
     a named list of data to attach to the node; see the
-    \link[jsTreeR:jstreeOutput]{Shiny examples}
+    \link[jsTreeR:jstreeExamples]{Shiny examples}
   }
   \item{\code{icon}}{
     space-separated HTML class names defining an icon, e.g.
     \code{"glyphicon glyphicon-flash"}; in a Shiny app you can also use
     a super tiny icon, e.g. \code{"supertinyicon-julia"}; see the
-    \link[jsTreeR:jstreeOutput]{Shiny example} showing all available such
-    icons
+    \emph{SuperTinyIcons} \link[jsTreeR:jstreeExample]{Shiny example}
+    showing all available such icons
   }
   \item{\code{type}}{
     a character string for usage with the \code{types} option; see first
@@ -78,12 +79,16 @@ fields
 
 \item{elementId}{a HTML id for the widget (useless for common usage)}
 
+\item{selectLeavesOnly}{logical, for usage in Shiny, whether to get only
+selected leaves}
+
 \item{checkboxes}{logical, whether to enable checkboxes next to each node;
 this makes easier the selection of multiple nodes}
 
 \item{search}{either a logical value, whether to enable the search
 functionality with default options, or a named list of options for the
-search functionality; see the \link[jsTreeR:jstreeOutput]{Shiny example}
+search functionality; see the \emph{SuperTinyIcons}
+\link[jsTreeR:jstreeExample]{Shiny example}
 and the \href{https://www.jstree.com/api/}{jsTree API documentation} for
 the list of possible options}
 
@@ -119,12 +124,15 @@ where this option is used to define restrictions on the drag-and-drop
 behavior}
 
 \item{grid}{list of settings for the grid; see the second example, the
-\link[jsTreeR:jstreeOutput]{Shiny example}, and
+\emph{grid} \link[jsTreeR:jstreeExample]{Shiny example}, and
 \href{https://github.com/deitch/jstree-grid/#options}{github.com/deitch/jstree-grid}
 for the list of all available options}
 
 \item{theme}{jsTree theme, one of \code{"default"},
 \code{"default-dark"}, or \code{"proton"}}
+}
+\value{
+A \code{htmlwidget} object.
 }
 \description{
 Create a HTML widget displaying an interactive tree.
@@ -193,12 +201,12 @@ dnd <- list(
   )
 )
 
-jstree(
+\donttest{jstree(
   nodes,
   dragAndDrop = TRUE, dnd = dnd,
   types = types,
   checkCallback = checkCallback
-)
+)}
 
 
 # example illustrating the 'grid' option ####

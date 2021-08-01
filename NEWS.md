@@ -1,3 +1,13 @@
+# jsTreeR 1.3.0 (2021-08-01)
+
+* The `jstree` function has a new argument `selectLeavesOnly` for usage in 
+Shiny; if `TRUE`, only the selected leaves are retained in the selection.
+* Added some Shiny examples.
+* Upgraded 'jstree' library to version 3.3.11.
+* Dependency to the 'fontawesome' package.
+* Dependency to the 'jquerylib' package.
+
+
 # jsTreeR 1.2.0 (2021-01-16)
 
 * Always exclude `.git` and `.Rproj.user` folders in the gadget.
