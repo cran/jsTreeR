@@ -1,12 +1,12 @@
-e54333292f90b574c0afa3b347033771 *DESCRIPTION
+ef87ded06b0fb3196b4c542405bcebf0 *DESCRIPTION
 b6ffce79d27e7a26bd89f6d958362ade *LICENSE.note
 5e101fbad19c793ad844db26b4f824e9 *NAMESPACE
-65d973d3c468c67e7d778369704ba652 *NEWS.md
+5230e3b14fa6bb30106beb136844c108 *NEWS.md
 112c1e3d512243bf52109a91c3c37a96 *R/Countries.R
 078f830f2d607bca38a3b1f21841a6cd *R/folderGadget.R
 cd10cbad654c99df3229590315171f96 *R/internal.R
 32677cb4524972320eae33fc1d06df6d *R/jstree-shiny.R
-6de5812614f45a78ad1e4961bd392920 *R/jstree.R
+12d2326498aaca52921da67bf83b0462 *R/jstree.R
 f5633604dd8d5eaf60185fd3036444df *R/jstreeExamples.R
 ceda4ef5e67962ae34ae9bcf61146d00 *R/zzz.R
 b8c6103e76ab8fadef90368584afabe1 *README.md
@@ -14,6 +14,9 @@ ed13f0d2099160e1fdde9a9a881f06ea *data/Countries.rda
 a67b7dbb5dfe207bedc051f110ea4893 *inst/examples/SuperTinyIcons/global.R
 32e78a247a7a9b8d402e5408fc3b6e0b *inst/examples/SuperTinyIcons/server.R
 7c3eb8385b5e2f41561d4c7d935a3611 *inst/examples/SuperTinyIcons/ui.R
+367dd685a24e377bd83b4babb698985a *inst/examples/contextMenu/global.R
+89c6e4ae4f5140d02bfe24cd52218fae *inst/examples/contextMenu/server.R
+6761a254892a335cacd39f69355df496 *inst/examples/contextMenu/ui.R
 b5e1640ce795d70e7456a789712bd19e *inst/examples/filtering/global.R
 bb871904293bbae567ac60716d136730 *inst/examples/filtering/server.R
 95d0d7ec7c0890e03fd477583ce50e15 *inst/examples/filtering/ui.R
@@ -570,6 +573,6 @@ aa20ce97004cdbd0b57325b7e0df75fb *inst/rstudio/addins.dcf
 54f959b76d295377716bb3409bb5c7d6 *man/folderGadget.Rd
 7b8f5d9cdd6af40bee28dfa90ced00f8 *man/jsTreeR-imports.Rd
 02b791bbb403acf742d846cacf0e889a *man/jstree-shiny.Rd
-e0cb0dc4eaf150c83725f4a088e6a9da *man/jstree.Rd
+a90c7775620efca9f62fb5be3af04e20 *man/jstree.Rd
 b7c96ff04fcdf47618c185cef6424353 *man/jstreeExample.Rd
 c4ecdd85f6c9e9368417e98436643bc4 *man/jstreeExamples.Rd
