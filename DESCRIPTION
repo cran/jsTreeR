@@ -1,7 +1,7 @@
 Package: jsTreeR
 Type: Package
 Title: A Wrapper of the JavaScript Library 'jsTree'
-Version: 1.4.0
+Version: 1.5.0
 Authors@R: c(
     person("Stéphane", "Laurent", email = "laurent_step@outlook.fr", role = c("aut", "cre")),
     person("jQuery contributors", role = c("ctb", "cph"), comment = "jQuery"),
@@ -20,10 +20,10 @@ LazyData: true
 Imports: htmlwidgets, shiny, htmltools, rstudioapi, shinyAce, miniUI,
         tools, stats, base64enc, utils, R.utils, fontawesome, jquerylib
 Suggests: jsonlite, magrittr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends: R (>= 2.10)
 NeedsCompilation: no
-Packaged: 2021-09-19 05:42:11 UTC; SDL96354
+Packaged: 2022-01-10 13:45:41 UTC; SDL96354
 Author: Stéphane Laurent [aut, cre],
   jQuery contributors [ctb, cph] (jQuery),
   Ivan Bozhanov [ctb, cph] (jsTree),
@@ -33,4 +33,4 @@ Author: Stéphane Laurent [aut, cre],
   Terence Eden [ctb, cph] (SuperTinyIcons)
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Repository: CRAN
-Date/Publication: 2021-09-19 06:20:02 UTC
+Date/Publication: 2022-01-10 15:02:42 UTC

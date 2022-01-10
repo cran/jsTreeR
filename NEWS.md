@@ -1,3 +1,9 @@
+# jstreeR 1.5.0 (2022-01-10)
+
+Added the new function `jstreeDestroy` which destroys a tree. It is necessary 
+to call this function if you want to change the nodes of a tree.
+
+
 # jsTreeR 1.4.0 (2021-09-19)
 
 * Allow alternative ways to populate the tree: using a callback function, 
