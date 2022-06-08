@@ -1,3 +1,35 @@
+function filterChecked0(instance, list, keys){
+  var out = {};
+  keys.forEach(function (k) {
+    out[k] = list[k];
+  });
+  var children = list.children.map(function (child) {
+    var id = child.id;
+    var checked = instance.get_checked_descendants(id);
+    if(checked.length > 0){
+      return filterChecked0(instance, child, keys);
+    }
+    if(instance.is_leaf(id) && instance.is_checked(id)){
+      return extractKeys(child);
+    }
+    return;
+  });
+  out.children = children.filter(function(x){return x !== undefined});
+  return out;
+}
+
+function filterChecked(instance, keys){
+  if(instance.get_checked_descendants("#").length === 0){
+    return {};
+  }
+  var lists = instance.get_json().filter(function(x){
+    return instance.get_checked_descendants(x.id).length !== 0
+  });
+  return lists.map(function(x){
+    return filterChecked0(instance, x, keys);
+  });
+}
+
 function extractKeysWithChildren(list, keys) {
   var out = {};
   keys.forEach(function (k) {
@@ -39,7 +71,7 @@ function setShinyValue(instance) {
   );
 }
 
-function setShinyValueSelectedNodes(instance, leavesOnly) {
+function setShinyValueSelectedNodes(instance, leavesOnly, checkboxes) {
   var selectedNodes = instance.get_selected(true);
   var nodes = getNodes(selectedNodes);
   var leaves = [];
@@ -68,6 +100,12 @@ function setShinyValueSelectedNodes(instance, leavesOnly) {
     instance.element.attr("id") + "_selected_paths:jsTreeR.list",
     leavesOnly ? leavePathNodes : pathNodes
   );
+  if(checkboxes){
+    Shiny.setInputValue(
+      instance.element.attr("id") + "_selected_tree:jsTreeR.list",
+      filterChecked(instance, ["text", "data", "type"])
+    );
+  }
 }
 
 var inShiny = HTMLWidgets.shinyMode;
@@ -133,7 +171,10 @@ HTMLWidgets.widget({
 
         if (x.checkbox)
           options.checkbox = {
-            keep_selected_style: false
+            keep_selected_style: false,
+            cascade_to_disabled: false
+            //three_state: false,
+            //cascade: "up+undetermined"
           };
 
         if (typeof x.search !== "boolean") options.search = x.search;
@@ -147,6 +188,7 @@ HTMLWidgets.widget({
         }
 
         var leavesOnly = x.selectLeavesOnly;
+        var checkboxes = x.checkbox;
 
         $el.jstree(options);
 
@@ -164,7 +206,7 @@ HTMLWidgets.widget({
           }
           if (inShiny) {
             setShinyValue(data.instance);
-            setShinyValueSelectedNodes(data.instance, leavesOnly);
+            setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
           }
         });
 
@@ -198,7 +240,7 @@ HTMLWidgets.widget({
             //            Shiny.setInputValue(
             //              id, getNodesWithChildren(data.instance.get_json())
             //            );
-            setShinyValueSelectedNodes(data.instance, leavesOnly);
+            setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
           }
         });
 
@@ -214,7 +256,7 @@ HTMLWidgets.widget({
               to: newPath
             });
             setShinyValue(instance);
-            setShinyValueSelectedNodes(instance, leavesOnly);
+            setShinyValueSelectedNodes(instance, leavesOnly, checkboxes);
           }
         });
 

@@ -1,7 +1,9 @@
 # __jsTreeR__
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/stla/jsTreeR/workflows/R-CMD-check/badge.svg)](https://github.com/stla/jsTreeR/actions)
+[![R-CMD-check](https://github.com/stla/jsTreeR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/jsTreeR/actions/workflows/R-CMD-check.yaml)
+[![](https://www.r-pkg.org/badges/version/jsTreeR?color=orange)](https://cran.r-project.org/package=jsTreeR)
+[![](https://img.shields.io/badge/devel%20version-2.0.0-blue.svg)](https://github.com/stla/jsTreeR)
 <!-- badges: end -->
 
 A wrapper of the JavaScript library [jsTree](https://www.jstree.com/). 
@@ -9,7 +11,7 @@ This package is similar to [shinyTree](https://github.com/shinyTree/shinyTree)
 but it allows more options. It also provides a Shiny gadget allowing to 
 manipulate one or more folders.
 
-![](https://raw.githubusercontent.com/stla/jsTreeR/master/inst/screenshots/jsTreeR_dragAndDrop.gif)
+![](https://raw.githubusercontent.com/stla/jsTreeR/master/inst/screenshots/jsTreeR_dragAndDrop-update.gif)
 
 ![](https://raw.githubusercontent.com/stla/jsTreeR/master/inst/screenshots/jsTreeR_search.gif)
 
@@ -19,6 +21,16 @@ manipulate one or more folders.
 
 ![](https://raw.githubusercontent.com/stla/jsTreeR/master/inst/screenshots/jsTreeR_folderGadget.gif)
 
+#### The 'tree navigator' Shiny module:
+
+![](https://raw.githubusercontent.com/stla/jsTreeR/master/inst/screenshots/jsTreeR_treeNavigator.gif)
+
+The 'tree navigator' has not all the features of the 'folder gadget', it only 
+allows to navigate in the server side file system and to select some files. 
+But the 'folder gadget' loads all the structure of the root folder(s), while 
+the 'tree navigator' loads the contents of a clicked folder only when this one 
+is clicked by the user. And as a Shiny module, it is possible to build around 
+it a more elaborated Shiny app.
 
 ___
 
