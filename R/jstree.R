@@ -14,10 +14,13 @@
 #'     }
 #'     \item{\code{icon}}{
 #'       space-separated HTML class names defining an icon, e.g.
-#'       \code{"glyphicon glyphicon-flash"}; in a Shiny app you can also use
-#'       a super tiny icon, e.g. \code{"supertinyicon-julia"}; see the
-#'       \emph{SuperTinyIcons} \link[jsTreeR:jstreeExample]{Shiny example}
-#'       showing all available such icons
+#'       \code{"glyphicon glyphicon-flash"} or \code{"fa fa-folder"};
+#'       one can also get an icon from an image file in a Shiny app, see the
+#'       \emph{imageIcon} \link[jsTreeR:jstreeExample]{Shiny example};
+#'       you can also use a super tiny icon, e.g. \code{"supertinyicon-julia"};
+#'       see the \emph{SuperTinyIcons}
+#'       \link[jsTreeR:jstreeExample]{Shiny example} showing all available
+#'       such icons
 #'     }
 #'     \item{\code{type}}{
 #'       a character string for usage with the \code{types} option; see first
@@ -468,7 +471,23 @@ jstree <- function(
       #   stylesheet = "css/bootstrap.min.css",
       #   package = "shiny"
       # ),
-      fa_html_dependency()
+      fa_html_dependency(),
+      htmlDependency(
+        name = "SuperTinyIcons",
+        version = "0.4.0",
+        src = "www/SuperTinyIcons",
+        stylesheet = "SuperTinyIcons.css",
+        package = "jsTreeR",
+        all_files = TRUE
+      ),
+      htmlDependency(
+        name = "OtherIcons",
+        version = "0.0.1",
+        src = "www/OtherIcons",
+        stylesheet = "OtherIcons.css",
+        package = "jsTreeR",
+        all_files = TRUE
+      )
     )
   )
 }
