@@ -1,3 +1,8 @@
+# jsTreeR 2.2.0 (2022-10-21)
+
+- Fixed bug #11: the search bar was not destroyed by a call to `jstreeDestroy`.
+
+
 # jsTreeR 2.1.0 (2022-06-07)
 
 - New example showing how to use some images as icons (thanks @ismirsehregal).
