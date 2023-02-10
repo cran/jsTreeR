@@ -1,11 +1,11 @@
-3147284cc30bbd3d0badfccb105b3e23 *DESCRIPTION
+14826d0f2259978063551a9bedb50e66 *DESCRIPTION
 b6ffce79d27e7a26bd89f6d958362ade *LICENSE.note
-246adeef90633989882d59e972dfd3bb *NAMESPACE
-ec3a75ba05c387a74357c3df5fd4b236 *NEWS.md
+38cd05f5d21ad8a60b50b238c7054928 *NAMESPACE
+c37f0b10bc67cc1663d631de3dfa618b *NEWS.md
 112c1e3d512243bf52109a91c3c37a96 *R/Countries.R
 078f830f2d607bca38a3b1f21841a6cd *R/folderGadget.R
 0874f9e3e9b2866d061d0ecf93c34022 *R/internal.R
-049b79cf77c9efe04c6d651a28330d68 *R/jstree-shiny.R
+ec447b99799860b1d444821b5eb33b31 *R/jstree-shiny.R
 8c2fbdad5008176bab21861b1298171f *R/jstree.R
 7009f01cc8a00e25e7edad8594d24683 *R/jstreeExamples.R
 b6f30d042a39ab2e745287cc99af9b6a *R/treeNavigator.R
@@ -692,7 +692,7 @@ ee8495d509f4cfead2f67194607ffc0d *inst/htmlwidgets/gadget/gadget.js
 dafdab44bd544c238822debf7a8f1950 *inst/htmlwidgets/gadget/pdfobject.min.js
 2af0a4153155ce7645382a7adbe03f3b *inst/htmlwidgets/gadget/trash.css
 9c88c82dcabb4bb0f739f9a5adfcdf3d *inst/htmlwidgets/gadget/trash.js
-9777d1a5197caa56e3b8913fdefe982d *inst/htmlwidgets/jstreer.js
+9f0293fd18138f3bd1578f9eafb33627 *inst/htmlwidgets/jstreer.js
 8fe07158717c40d93db2f0b4ef9c54bc *inst/htmlwidgets/jstreer.yaml
 561681479aeb21d4600cde6a8444c546 *inst/htmlwidgets/lib/bootstrap-theme/30px.png
 20e2f9c5b9f921ca2f6c90da355ceaa6 *inst/htmlwidgets/lib/bootstrap-theme/32px.png
@@ -1385,7 +1385,8 @@ deb7b0d601dc695461a2d6011b75bc5a *inst/www/SuperTinyIcons/zoom.svg
 7b8f5d9cdd6af40bee28dfa90ced00f8 *man/jsTreeR-imports.Rd
 fab749f3c83328abd432af0f46962376 *man/jstree-shiny.Rd
 77ea4cff0d4eb438aca99e0fefdfe3c9 *man/jstree.Rd
-a69ab21b49a3f19506d0ea34c34c0b4c *man/jstreeDestroy.Rd
+0192db41da54679b8ffb297141467d98 *man/jstreeDestroy.Rd
 86ccf36c22661c588fb9c7369e8ec55c *man/jstreeExample.Rd
 43d071a83860924f0feddda13b44fa99 *man/jstreeExamples.Rd
+0685e853045799afc5420b63bed4786f *man/jstreeUpdate.Rd
 88c9e2feff0658df467da5f44ddeb32a *man/treeNavigator-module.Rd

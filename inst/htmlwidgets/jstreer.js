@@ -204,14 +204,21 @@ HTMLWidgets.widget({
               $el.jstree(true).search($(this).val());
             });
           }
-          if (inShiny) {
+          if(inShiny) {
             setShinyValue(data.instance);
             setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
           }
         });
 
-        $el.on("move_node.jstree", function (e, data) {
-          if (inShiny) {
+        $el.on("refresh.jstree", function(e, data) {
+          if(inShiny) {
+            setShinyValue(data.instance);
+            setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+          }
+        });
+
+        $el.on("move_node.jstree", function(e, data) {
+          if(inShiny) {
             var newInstance = data.new_instance;
             var oldInstance = data.old_instance;
             var newInstanceId = newInstance.element.attr("id");
@@ -299,23 +306,42 @@ HTMLWidgets.widget({
           }
         });
 
-        if (inShiny) {
+        if(inShiny) {
+
           var id = el.id;
-          var handlerName = id + "_destroy";
-          Shiny.addCustomMessageHandler(handlerName, function (nothing) {
+
+          Shiny.addCustomMessageHandler(id + "_destroy", function(nothing) {
             try {
               $("#" + id + "-search").remove();
               $el.jstree(true).destroy();
-            } catch (err) {
+            } catch(err) {
               console.warn(
-                "Element ' + id + ' is not an instance of `jstree`."
+                "An error occured."
               );
             }
           });
+
+          Shiny.addCustomMessageHandler(id + "_update", function(newnodes) {
+            try {
+              var $search = $("#" + id + "-search");
+              if($search.length > 0) {
+                $search.val("");
+              }
+              $el.jstree(true).settings.core.data = newnodes;
+              $el.jstree(true).refresh(true, true);
+            } catch(err) {
+              console.warn(
+                "An error occured."
+              );
+            }
+          });
+
         }
+
+
       },
 
-      resize: function (width, height) {
+      resize: function(width, height) {
         // TODO: code to re-render the widget with a new size
       }
     };
