@@ -1,7 +1,7 @@
-14826d0f2259978063551a9bedb50e66 *DESCRIPTION
+0e49a99ba1bb06567457864d87096cb7 *DESCRIPTION
 b6ffce79d27e7a26bd89f6d958362ade *LICENSE.note
 38cd05f5d21ad8a60b50b238c7054928 *NAMESPACE
-c37f0b10bc67cc1663d631de3dfa618b *NEWS.md
+c3d558af0d1ab334d99f895a9d9b4f4d *NEWS.md
 112c1e3d512243bf52109a91c3c37a96 *R/Countries.R
 078f830f2d607bca38a3b1f21841a6cd *R/folderGadget.R
 0874f9e3e9b2866d061d0ecf93c34022 *R/internal.R
@@ -664,6 +664,9 @@ deb7b0d601dc695461a2d6011b75bc5a *inst/examples/SuperTinyIcons/www/zoom.svg
 367dd685a24e377bd83b4babb698985a *inst/examples/contextMenu/global.R
 89c6e4ae4f5140d02bfe24cd52218fae *inst/examples/contextMenu/server.R
 6761a254892a335cacd39f69355df496 *inst/examples/contextMenu/ui.R
+f14213e3a63cecf5651f415796162660 *inst/examples/contextMenu2/global.R
+ceefdd84e5104133fdaa74598ebd5902 *inst/examples/contextMenu2/server.R
+4b4a0df375ce6cbe4bf31e20f92fdabc *inst/examples/contextMenu2/ui.R
 77c6d2f7fd7d196cf67eb3dd8c7d6401 *inst/examples/filtering/global.R
 bb871904293bbae567ac60716d136730 *inst/examples/filtering/server.R
 95d0d7ec7c0890e03fd477583ce50e15 *inst/examples/filtering/ui.R
