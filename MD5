@@ -1,7 +1,7 @@
-e0eb32694b8c83062e16ca44b6c96be3 *DESCRIPTION
+f2c77d9ba761fcc1096a7ca21eb84b3a *DESCRIPTION
 74e897a38ca2fd638e74c87c6481758b *LICENSE.note
 38cd05f5d21ad8a60b50b238c7054928 *NAMESPACE
-ca23b02f64fe4a1a499b6eab9a4af5eb *NEWS.md
+96ff05dba712367de635fa179e34213c *NEWS.md
 60216c17731c6dc1e243edc160135d04 *R/Countries.R
 078f830f2d607bca38a3b1f21841a6cd *R/folderGadget.R
 0874f9e3e9b2866d061d0ecf93c34022 *R/internal.R
@@ -695,7 +695,7 @@ bd5ac18480ba93f9dcafdd392ac79933 *inst/examples/treeNavigator/server.R
 348321edc4d270a19c48d464ddd3ea6a *inst/htmlwidgets/gadget/pdfobject.min.js
 e08134ced8f87547eab9b8e5642a57fe *inst/htmlwidgets/gadget/trash.css
 04f0832734e4c5b141f4199535647d04 *inst/htmlwidgets/gadget/trash.js
-c3aa2990416050227753825b36c09a25 *inst/htmlwidgets/jstreer.js
+be5436de2516cbacb8b7f561bb6897c9 *inst/htmlwidgets/jstreer.js
 8fe07158717c40d93db2f0b4ef9c54bc *inst/htmlwidgets/jstreer.yaml
 561681479aeb21d4600cde6a8444c546 *inst/htmlwidgets/lib/bootstrap-theme/30px.png
 20e2f9c5b9f921ca2f6c90da355ceaa6 *inst/htmlwidgets/lib/bootstrap-theme/32px.png
@@ -713,14 +713,14 @@ aa658f4b66a18e3838cb73074a1ad577 *inst/htmlwidgets/lib/bootstrap-theme/fonts/tit
 9a3edaa89af346ec20e51a46daf2f880 *inst/htmlwidgets/lib/bootstrap-theme/fonts/titillium/titilliumweb-regular-webfont.woff
 0ff5e531eff5d51fdbbf2c33907212fe *inst/htmlwidgets/lib/bootstrap-theme/style.min.css
 9ed4669f524bec38319be63a2ee4ba26 *inst/htmlwidgets/lib/bootstrap-theme/throbber.gif
-8c2a873c84c13aa739e6492c088358ab *inst/htmlwidgets/lib/jstree/dist/jstree.min.js
+f3e9d5d5c189465870c9e527351b4e27 *inst/htmlwidgets/lib/jstree/dist/jstree.min.js
 37f0007202aee09e6e384929e1b1786b *inst/htmlwidgets/lib/jstree/dist/themes/default-dark/32px.png
 8ca4b8aa502255f3f5814751137cc548 *inst/htmlwidgets/lib/jstree/dist/themes/default-dark/40px.png
-bf82a36fa19f83c27a67294abc7abfb7 *inst/htmlwidgets/lib/jstree/dist/themes/default-dark/style.min.css
+075c0c580cfdb62e2bcc236179dd72c0 *inst/htmlwidgets/lib/jstree/dist/themes/default-dark/style.min.css
 012f031e2fb164f1c2f521c90d9bd967 *inst/htmlwidgets/lib/jstree/dist/themes/default-dark/throbber.gif
 21bd42ab5782494e9227dd05c5b89c4d *inst/htmlwidgets/lib/jstree/dist/themes/default/32px.png
 7d2fda9cfc3a739e506561b08e4f019f *inst/htmlwidgets/lib/jstree/dist/themes/default/40px.png
-2309f52c2edacb860a9157989922a334 *inst/htmlwidgets/lib/jstree/dist/themes/default/style.min.css
+6864bc335015baf320b9fe3b4cb6e6fe *inst/htmlwidgets/lib/jstree/dist/themes/default/style.min.css
 95bed8e667915e96907820b79f11b76c *inst/htmlwidgets/lib/jstree/dist/themes/default/throbber.gif
 8755746a3b39708365a8922a1cde2a65 *inst/htmlwidgets/lib/jstreegrid/jstreegrid.min.js
 f348ce2b218b638dd488ab554702f6f3 *inst/rstudio/addins.dcf
