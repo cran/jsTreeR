@@ -9,6 +9,7 @@ jstree(
   elementId = NULL,
   selectLeavesOnly = FALSE,
   checkboxes = FALSE,
+  checkWithText = TRUE,
   search = FALSE,
   searchtime = 250,
   dragAndDrop = FALSE,
@@ -92,6 +93,9 @@ selected leaves}
 \item{checkboxes}{logical, whether to enable checkboxes next to each node;
 this makes easier the selection of multiple nodes}
 
+\item{checkWithText}{logical, whether the checkboxes must be selected when
+clicking on the text of a node}
+
 \item{search}{either a logical value, whether to enable the search
 functionality with default options, or a named list of options for the
 search functionality; see the \emph{SuperTinyIcons}
@@ -131,7 +135,7 @@ where this option is used to define restrictions on the drag-and-drop
 behavior}
 
 \item{grid}{list of settings for the grid; see the second example, the
-\emph{grid} \link[jsTreeR:jstreeExample]{Shiny example}, and
+\emph{grid} \link[jsTreeR:jstreeExample]{Shiny example}, and the web page
 \href{https://github.com/deitch/jstree-grid/#options}{github.com/deitch/jstree-grid}
 for the list of all available options}
 
@@ -357,7 +361,7 @@ library(jsTreeR)
 
 customMenu <- JS("function customMenu(node)
 {
-  var tree = $('#'mytree').jstree(true);
+  var tree = $('#mytree').jstree(true);
   var items = {
     'rename' : {
       'label' : 'Rename',

@@ -64,6 +64,8 @@
 #'   selected leaves
 #' @param checkboxes logical, whether to enable checkboxes next to each node;
 #'   this makes easier the selection of multiple nodes
+#' @param checkWithText logical, whether the checkboxes must be selected when
+#'   clicking on the text of a node
 #' @param search either a logical value, whether to enable the search
 #'   functionality with default options, or a named list of options for the
 #'   search functionality; see the \emph{SuperTinyIcons}
@@ -92,7 +94,7 @@
 #'   where this option is used to define restrictions on the drag-and-drop
 #'   behavior
 #' @param grid list of settings for the grid; see the second example, the
-#'   \emph{grid} \link[jsTreeR:jstreeExample]{Shiny example}, and
+#'   \emph{grid} \link[jsTreeR:jstreeExample]{Shiny example}, and the web page
 #'   \href{https://github.com/deitch/jstree-grid/#options}{github.com/deitch/jstree-grid}
 #'   for the list of all available options
 #' @param theme jsTree theme, one of \code{"default"},
@@ -319,7 +321,7 @@
 #'
 #' customMenu <- JS("function customMenu(node)
 #' {
-#'   var tree = $('#'mytree').jstree(true);
+#'   var tree = $('#mytree').jstree(true);
 #'   var items = {
 #'     'rename' : {
 #'       'label' : 'Rename',
@@ -373,6 +375,7 @@ jstree <- function(
   nodes, elementId = NULL,
   selectLeavesOnly = FALSE,
   checkboxes = FALSE,
+  checkWithText = TRUE,
   search = FALSE, searchtime = 250,
   dragAndDrop = FALSE, dnd = NULL,
   multiple = TRUE,
@@ -403,6 +406,7 @@ jstree <- function(
   stopifnot(is.null(elementId) || isString(elementId))
   stopifnot(isBoolean(selectLeavesOnly))
   stopifnot(isBoolean(checkboxes))
+  stopifnot(isBoolean(checkWithText))
   stopifnot(isBoolean(search) || isNamedList(search))
   stopifnot(isBoolean(dragAndDrop))
   stopifnot(is.null(dnd) || isNamedList(dnd))
@@ -421,6 +425,7 @@ jstree <- function(
     data = nodes,
     selectLeavesOnly = selectLeavesOnly,
     checkbox = checkboxes,
+    checkWithText = ifelse(checkboxes, checkWithText, TRUE),
     search = search,
     searchtime = searchtime,
     dragAndDrop = dragAndDrop,
@@ -432,7 +437,7 @@ jstree <- function(
     wholerow = wholerow,
     contextMenu = contextMenu,
     checkCallback = checkCallback %||% (dragAndDrop || contextMenu),
-    grid = grid,
+    grid = validateGrid(grid),
     theme = match.arg(theme, c("default", "default-dark", "proton"))
   )
 
@@ -449,7 +454,7 @@ jstree <- function(
       bootstrapLib(theme = NULL),
       htmlDependency(
         name = "jstree",
-        version = "3.3.12.9000",
+        version = "3.3.16",
         src = "htmlwidgets/lib/jstree/dist",
         script = "jstree.min.js",
         stylesheet = c(

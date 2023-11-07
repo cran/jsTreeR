@@ -102,11 +102,50 @@ function setShinyValueSelectedNodes(instance, leavesOnly, checkboxes) {
   );
   if(checkboxes){
     Shiny.setInputValue(
-      instance.element.attr("id") + "_selected_tree:jsTreeR.list",
+      instance.element.attr("id") + "_checked_tree:jsTreeR.list",
       filterChecked(instance, ["text", "data", "type"])
     );
   }
 }
+
+function setShinyValueCheckedNodes(instance, leavesOnly) {
+  var checkedNodes = instance.get_checked(true);
+  var nodes = getNodes(checkedNodes);
+  var leaves = [];
+  var pathNodes = [];
+  var leavePathNodes = [];
+  for(var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    var path = instance.get_path(checkedNodes[i], "/");
+    var pathNode = {
+      path: path,
+      data: node.data
+    };
+    pathNodes.push(pathNode);
+    var nchildren = node.children.length;
+    delete nodes[i].children;
+    if (leavesOnly && nchildren === 0) {
+      leaves.push(nodes[i]);
+      leavePathNodes.push(pathNode);
+    }
+  }
+  Shiny.setInputValue(
+    instance.element.attr("id") + "_checked:jsTreeR.list",
+    leavesOnly ? leaves : nodes
+  );
+  Shiny.setInputValue(
+    instance.element.attr("id") + "_checked_paths:jsTreeR.list",
+    leavesOnly ? leavePathNodes : pathNodes
+  );
+}
+
+function gridSearchBox(index, id) {
+  var input =
+    `<input type="text" placeholder="Search..." name="${index}" value=""` +
+    `style="width: 100%;" class="${id}-searchField">`;
+  return input;
+}
+
 
 var inShiny = HTMLWidgets.shinyMode;
 
@@ -115,38 +154,38 @@ HTMLWidgets.widget({
 
   type: "output",
 
-  factory: function (el, width, height) {
+  factory: function(el, width, height) {
     var $el = $(el);
     var options = {};
 
     return {
-      renderValue: function (x) {
+      renderValue: function(x) {
         var plugins = ["themes"];
-        if (x.checkbox) {
+        if(x.checkbox) {
           plugins.push("checkbox");
         }
-        if (x.search) {
+        if(x.search) {
           plugins.push("search");
         }
-        if (x.dragAndDrop) {
+        if(x.dragAndDrop) {
           plugins.push("dnd");
         }
-        if (x.types) {
+        if(x.types) {
           plugins.push("types");
         }
-        if (x.unique) {
+        if(x.unique) {
           plugins.push("unique");
         }
-        if (x.sort) {
+        if(x.sort) {
           plugins.push("sort");
         }
-        if (x.wholerow) {
+        if(x.wholerow) {
           plugins.push("wholerow");
         }
-        if (x.contextMenu) {
+        if(x.contextMenu) {
           plugins.push("contextmenu");
         }
-        if (x.grid) {
+        if(x.grid) {
           plugins.push("grid");
         }
         options.plugins = plugins;
@@ -163,25 +202,27 @@ HTMLWidgets.widget({
           }
         };
 
-        if (x.types) options.types = x.types;
+        if(x.types) options.types = x.types;
 
-        if (x.dnd) options.dnd = x.dnd;
+        if(x.dnd) options.dnd = x.dnd;
 
-        if (x.grid) options.grid = x.grid;
+        if(x.grid) options.grid = x.grid;
 
-        if (x.checkbox)
+        if(x.checkbox)
           options.checkbox = {
-            keep_selected_style: false,
-            cascade_to_disabled: false
+            keep_selected_style: !x.checkWithText,
+            cascade_to_disabled: false,
+            tie_selection: x.checkWithText,
+            whole_node: x.checkWithText
             //three_state: false,
             //cascade: "up+undetermined"
           };
 
-        if (typeof x.search !== "boolean") options.search = x.search;
+        if(typeof x.search !== "boolean") options.search = x.search;
 
-        if (typeof x.contextMenu !== "boolean") {
+        if(typeof x.contextMenu !== "boolean") {
           options.contextmenu = x.contextMenu;
-        } else if (x.contextMenu) {
+        } else if(x.contextMenu) {
           options.contextmenu = {
             select_node: false
           };
@@ -192,21 +233,59 @@ HTMLWidgets.widget({
 
         $el.jstree(options);
 
-        $el.on("ready.jstree", function (e, data) {
-          if (x.search) {
-            var $input = $(
-              "<input type='search' id='" +
-                el.id +
-                "-search' placeholder='Search' />"
-            );
-            $input.insertBefore($el);
-            $input.on("keyup", function () {
-              $el.jstree(true).search($(this).val());
-            });
+        $el.on("ready.jstree", function(e, data) {
+          if(x.search) {
+            if(x.grid) {
+
+              var ncolumns = x.grid.columns.length;
+              for(var i = 0; i < ncolumns; i++) {
+                var columnRoot = ".jstree-grid-column-" + i +
+                  ".jstree-grid-column-root-" + el.id;
+                var $header = $(columnRoot).children(".jstree-grid-header")
+                var $searchBox = $(gridSearchBox(i, el.id));
+                $header.after($searchBox)
+              }
+
+              var $searchBoxesSelector = $("." + el.id + "-searchField");
+              //add search functionality to the input fields
+              $searchBoxesSelector.keyup(function(e) {
+            	//get all input fields
+                var $searchFields = $searchBoxesSelector;
+                var searchValues = {};
+                //create for each input a key value pair with the key in the
+                //  name attribute of the input (also being the column index)
+                $searchFields.each(function() {
+                  var field = $(this);
+                  searchValues[field.attr("name")] = field.val();
+                });
+                //use the new searchColumn method
+                $el.jstree(true).searchColumn(searchValues);
+              });
+            } else {
+              var $input = $(
+                "<input type='search' id='" +
+                  el.id +
+                  "-search' placeholder='Search' />"
+              );
+              $input.insertBefore($el);
+              $input.on("keyup", function() {
+                $el.jstree(true).search($(this).val());
+              });
+            }
           }
+/*          $el.on("click", ".jstree-anchor", function(evt) {
+            alert("CLICK");
+            console.log(evt);
+            if(!x.checkWithText && !($(evt.target).hasClass("jstree-checkbox"))) {
+              evt.stopPropagation();
+            }
+          }); */
           if(inShiny) {
             setShinyValue(data.instance);
             setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+            if(checkboxes) {
+              setShinyValueCheckedNodes(data.instance, leavesOnly);
+            }
           }
         });
 
@@ -214,6 +293,9 @@ HTMLWidgets.widget({
           if(inShiny) {
             setShinyValue(data.instance);
             setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+            if(checkboxes) {
+              setShinyValueCheckedNodes(data.instance, leavesOnly);
+            }
           }
         });
 
@@ -242,31 +324,65 @@ HTMLWidgets.widget({
           }
         });
 
-        $el.on("changed.jstree", function (e, data) {
+        $el.on("changed.jstree", function(e, data) {
           if (inShiny) {
             //            Shiny.setInputValue(
             //              id, getNodesWithChildren(data.instance.get_json())
             //            );
             setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+            if(checkboxes) {
+              setShinyValueCheckedNodes(data.instance, leavesOnly);
+            }
             //setShinyValue(data.new_instance); // modif 9/10/2023
           }
         });
 
         $el.on("after_open.jstree", function(e, data) {
-          setShinyValue(data.instance); // modif 9/10/2023
+          if(inShiny) {
+            setShinyValue(data.instance);
+          } // modif 9/10/2023
         });
 
         $el.on("after_close.jstree", function(e, data) {
-          setShinyValue(data.instance); // modif 9/10/2023
+          if(inShiny) {
+            setShinyValue(data.instance);
+          } // modif 9/10/2023
         });
 
         $el.on("select_node.jstree", function(e, data) {
-          setShinyValue(data.instance); // modif 9/10/2023
+          if(inShiny) {
+            setShinyValue(data.instance);
+          } // modif 9/10/2023
         });
 
         $el.on("deselect_node.jstree", function(e, data) {
-          setShinyValue(data.instance); // modif 9/10/2023
+          if(inShiny) {
+            setShinyValue(data.instance);
+          } // modif 9/10/2023
         });
+
+        if(!x.checkWithText) {
+          $el.on("check_node.jstree", function(e, data) {
+            $el.jstree(true).select_node(data.node);
+            if(inShiny) {
+              setShinyValue(data.instance);
+              setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+              if(checkboxes) {
+                setShinyValueCheckedNodes(data.instance, leavesOnly);
+              }
+            }
+          });
+          $el.on("uncheck_node.jstree", function(e, data) {
+            $el.jstree(true).deselect_node(data.node);
+            if(inShiny) {
+              setShinyValue(data.instance);
+              setShinyValueSelectedNodes(data.instance, leavesOnly, checkboxes);
+              if(checkboxes) {
+                setShinyValueCheckedNodes(data.instance, leavesOnly);
+              }
+            }
+          });
+        }
 
         $el.on("rename_node.jstree", function (e, data) {
           if (inShiny) {
@@ -281,6 +397,9 @@ HTMLWidgets.widget({
             });
             setShinyValue(instance);
             setShinyValueSelectedNodes(instance, leavesOnly, checkboxes);
+            if(checkboxes) {
+              setShinyValueCheckedNodes(data.instance, leavesOnly);
+            }
           }
         });
 

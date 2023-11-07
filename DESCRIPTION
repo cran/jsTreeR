@@ -1,7 +1,7 @@
 Type: Package
 Package: jsTreeR
 Title: A Wrapper of the JavaScript Library 'jsTree'
-Version: 2.3.3
+Version: 2.4.0
 Authors@R: c(
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
     person("jQuery contributors", role = c("ctb", "cph"),
@@ -39,7 +39,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
 NeedsCompilation: no
-Packaged: 2023-10-10 07:05:09 UTC; SDL96354
+Packaged: 2023-11-07 07:27:42 UTC; SDL96354
 Author: Stéphane Laurent [aut, cre],
   jQuery contributors [ctb, cph] (jQuery),
   Ivan Bozhanov [ctb, cph] (jsTree),
@@ -49,4 +49,4 @@ Author: Stéphane Laurent [aut, cre],
   Terence Eden [ctb, cph] (SuperTinyIcons)
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Repository: CRAN
-Date/Publication: 2023-10-10 12:30:02 UTC
+Date/Publication: 2023-11-07 07:40:02 UTC
