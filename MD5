@@ -1,7 +1,7 @@
-7752eefade79cf02f2e96d79f14cb309 *DESCRIPTION
+90774690477994dfcc88eff4cd76b3d1 *DESCRIPTION
 74e897a38ca2fd638e74c87c6481758b *LICENSE.note
 305b3bcf182dbc9ea4af2613fa500af5 *NAMESPACE
-5e360a98ed6f4bd6396d015e0f224164 *NEWS.md
+a33c5ac6eeb0bbede4dd3f2a49071f59 *NEWS.md
 60216c17731c6dc1e243edc160135d04 *R/Countries.R
 078f830f2d607bca38a3b1f21841a6cd *R/folderGadget.R
 dea4eaed028e3e0a93e9ccd4606221f1 *R/grid.R
@@ -699,7 +699,7 @@ bd5ac18480ba93f9dcafdd392ac79933 *inst/examples/treeNavigator/server.R
 348321edc4d270a19c48d464ddd3ea6a *inst/htmlwidgets/gadget/pdfobject.min.js
 e08134ced8f87547eab9b8e5642a57fe *inst/htmlwidgets/gadget/trash.css
 04f0832734e4c5b141f4199535647d04 *inst/htmlwidgets/gadget/trash.js
-b7d3e931762d889950af5ac511e587cf *inst/htmlwidgets/jstreer.js
+92f3e38cfed3c633bebfaa06c53b70fa *inst/htmlwidgets/jstreer.js
 8fe07158717c40d93db2f0b4ef9c54bc *inst/htmlwidgets/jstreer.yaml
 561681479aeb21d4600cde6a8444c546 *inst/htmlwidgets/lib/bootstrap-theme/30px.png
 20e2f9c5b9f921ca2f6c90da355ceaa6 *inst/htmlwidgets/lib/bootstrap-theme/32px.png
