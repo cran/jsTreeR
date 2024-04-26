@@ -175,6 +175,12 @@ HTMLWidgets.widget({
 
     return {
       renderValue: function(x) {
+
+        if($el.hasClass("jstree")) {
+          $("#" + el.id + "-search").remove();
+          $el.jstree(true).destroy();
+        }
+
         var plugins = ["themes"];
         if(x.checkbox) {
           plugins.push("checkbox");
@@ -216,6 +222,8 @@ HTMLWidgets.widget({
             responsive: false
           }
         };
+
+        $.extend(options.core, x.coreOptions);
 
         if(x.types) options.types = x.types;
 
@@ -329,7 +337,7 @@ HTMLWidgets.widget({
             Shiny.setInputValue("jsTreeMoved:jsTreeR.copied", {
               from: { instance: oldInstanceId, path: oldPath },
               to: { instance: newInstanceId, path: newPath }
-            });
+            }, {priority: "event"});
             if(data.is_multi) { // ??
               setShinyValue(oldInstance, checkboxes);
               setShinyValue(newInstance, checkboxes);
@@ -441,7 +449,7 @@ HTMLWidgets.widget({
             Shiny.setInputValue("jsTreeCopied:jsTreeR.copied", {
               from: { instance: oldInstanceId, path: oldPath },
               to: { instance: newInstanceId, path: newPath }
-            });
+            }, {priority: "event"});
             setShinyValue(newInstance, checkboxes);
           }
         });
@@ -452,7 +460,7 @@ HTMLWidgets.widget({
             Shiny.setInputValue("jsTreeDeleted:jsTreeR.path", {
               instance: instance.element.attr("id"),
               path: instance.get_path(data.node)
-            });
+            }, {priority: "event"});
             setShinyValue(instance, checkboxes);
           }
         });
